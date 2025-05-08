@@ -9,17 +9,23 @@ import requests
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
-TELEGRAM_TOKEN = '8159912327:AAH4ZC8GX1EYfTip_gZqR_ES_KpkuQGPykQ'  # Replace this with your actual bot token
+# Replace with your actual bot token
+TELEGRAM_TOKEN = '8159912327:AAH4ZC8GX1EYfTip_gZqR_ES_KpkuQGPykQ'
 
-# Store dynamically added channels
+# Store dynamically added channels (use lowercase to avoid case duplicates)
 channel_ids = set()
 
 # List of daily content (message, image_url pairs)
 daily_content = [
     ("Day 1: Stay positive!", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
     ("Day 2: Keep learning.", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
-    # Add more days...
+    # Add more days as needed
 ]
+
+# Timezone and global scheduler
+tz = pytz.timezone('Asia/Kolkata')
+scheduler = BackgroundScheduler(timezone=tz)
+scheduler.start()
 
 # Function to send a message and image to a Telegram channel
 def send_daily_content(chat_id, text, image, **kwargs):
@@ -30,15 +36,11 @@ def send_daily_content(chat_id, text, image, **kwargs):
     except Exception as e:
         logging.error(f"❌ Error sending to {chat_id}: {e}")
 
-# Function to schedule daily messages
+# Function to schedule daily messages for a channel
 def schedule_for_channel(chat_id):
-    tz = pytz.timezone('Asia/Kolkata')
-    scheduler = BackgroundScheduler(timezone=tz)
-    scheduler.start()
-
     for i, (text, image) in enumerate(daily_content):
         run_date = datetime.now(tz).date() + timedelta(days=i)
-        run_time = tz.localize(datetime.combine(run_date, datetime.strptime("18:01", "%H:%M").time()))
+        run_time = tz.localize(datetime.combine(run_date, datetime.strptime("18:11", "%H:%M").time()))
 
         logging.info(f"📅 Scheduled Day {i+1} at {run_time} for {chat_id}")
 
@@ -59,7 +61,7 @@ def add_channel(update: Update, context: CallbackContext):
         update.message.reply_text("⚠️ Usage: /add_channel @channelusername or -1001234567890")
         return
 
-    channel = context.args[0]
+    channel = context.args[0].lower()
     if not (channel.startswith("@") or channel.startswith("-100")):
         update.message.reply_text("⚠️ Invalid format. Use @channelname or -100...")
         return
