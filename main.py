@@ -4,31 +4,37 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime, timedelta
 import pytz
 import logging
-import requests
 
-# Enable logging
+# Logging
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
-# Replace with your actual bot token
+# Replace with your bot token
 TELEGRAM_TOKEN = '8159912327:AAH4ZC8GX1EYfTip_gZqR_ES_KpkuQGPykQ'
 
-# Store dynamically added channels (use lowercase to avoid case duplicates)
-channel_ids = set()
-
-# List of daily content (message, image_url pairs)
-daily_content = [
-    ("Day 1: Stay positive!", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
-    ("Day 2: Keep learning.", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
-    # Add more days as needed
-]
-
-# Timezone and global scheduler
+# Timezone and scheduler
 tz = pytz.timezone('Asia/Kolkata')
 scheduler = BackgroundScheduler(timezone=tz)
 scheduler.start()
 
-# Function to send a message and image to a Telegram channel
-def send_daily_content(chat_id, text, image, **kwargs):
+# Tracked channels
+channel_ids = set()
+
+# Example: Unique messages and images for each day per channel
+channel_daily_content = {
+    "@bottextchannel": [
+        ("🌞 Stay positive! Day 1", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
+        ("📘 Keep learning! Day 2", "https://cdn.pixabay.com/photo/2023/02/20/12/20/mountain-7802783_1280.jpg"),
+        # Add up to 30 entries
+    ],
+    "@bottextchannel2": [
+        ("💡 Stay curious! Day 1", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
+        ("🎯 Stay focused! Day 2", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
+        # Add up to 30 entries
+    ]
+}
+
+# Send content
+def send_daily_content(chat_id, text, image):
     bot = Bot(token=TELEGRAM_TOKEN)
     try:
         bot.send_photo(chat_id=chat_id, photo=image, caption=text)
@@ -36,11 +42,16 @@ def send_daily_content(chat_id, text, image, **kwargs):
     except Exception as e:
         logging.error(f"❌ Error sending to {chat_id}: {e}")
 
-# Function to schedule daily messages for a channel
+# Scheduler for each channel
 def schedule_for_channel(chat_id):
-    for i, (text, image) in enumerate(daily_content):
+    content = channel_daily_content.get(chat_id)
+    if not content:
+        logging.warning(f"⚠️ No content for {chat_id}")
+        return
+
+    for i, (text, image) in enumerate(content):
         run_date = datetime.now(tz).date() + timedelta(days=i)
-        run_time = tz.localize(datetime.combine(run_date, datetime.strptime("18:11", "%H:%M").time()))
+        run_time = tz.localize(datetime.combine(run_date, datetime.strptime("09:49", "%H:%M").time()))
 
         logging.info(f"📅 Scheduled Day {i+1} at {run_time} for {chat_id}")
 
@@ -48,17 +59,13 @@ def schedule_for_channel(chat_id):
             send_daily_content,
             'date',
             run_date=run_time,
-            kwargs={
-                'chat_id': chat_id,
-                'text': text,
-                'image': image
-            }
+            kwargs={'chat_id': chat_id, 'text': text, 'image': image}
         )
 
-# Command to manually add a new channel
+# Add channel via command
 def add_channel(update: Update, context: CallbackContext):
     if not context.args:
-        update.message.reply_text("⚠️ Usage: /add_channel @channelusername or -1001234567890")
+        update.message.reply_text("⚠️ Usage: /add_channel @channelusername")
         return
 
     channel = context.args[0].lower()
@@ -66,18 +73,22 @@ def add_channel(update: Update, context: CallbackContext):
         update.message.reply_text("⚠️ Invalid format. Use @channelname or -100...")
         return
 
+    if channel not in channel_daily_content:
+        update.message.reply_text(f"❌ No content found for {channel}. Please define it in the code.")
+        return
+
     if channel not in channel_ids:
         channel_ids.add(channel)
         update.message.reply_text(f"✅ Channel {channel} added and scheduled!")
         schedule_for_channel(channel)
     else:
-        update.message.reply_text(f"ℹ️ Channel {channel} is already added.")
+        update.message.reply_text(f"ℹ️ Channel {channel} is already scheduled.")
 
 # Start command
 def start(update: Update, context: CallbackContext):
-    update.message.reply_text("🤖 Hello! Use /add_channel to start scheduling content for your channel.")
+    update.message.reply_text("🤖 Welcome! Use /add_channel @channelname to begin scheduling.")
 
-# Main bot setup
+# Bot runner
 def main():
     updater = Updater(TELEGRAM_TOKEN, use_context=True)
     dp = updater.dispatcher
