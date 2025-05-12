@@ -24,16 +24,22 @@ channel_daily_content = {
     "@bottextchannel": [
         ("🌞 Stay positive! Day 1", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
         ("📘 Keep learning! Day 2", "https://cdn.pixabay.com/photo/2023/02/20/12/20/mountain-7802783_1280.jpg"),
+        ("🌞 Stay positive! Day 3", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
+        ("🌞 Stay positive! Day 4", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
         # Add up to 30 entries
     ],
     "@bottextchannel2": [
         ("💡 Stay curious! Day 1", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
         ("🎯 Stay focused! Day 2", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
+        ("🌞 Stay positive! Day 3", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
+        ("🌞 Stay positive! Day 4", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
         # Add up to 30 entries
     ],
     "@merildlin12": [
         ("💡 Stay curious! Day 1", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
         ("🎯 Stay focused! Day 2", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
+        ("🌞 Stay positive! Day 3", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
+        ("🌞 Stay positive! Day 4", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
         # Add up to 30 entries
     ]
 }
@@ -56,7 +62,7 @@ def schedule_for_channel(chat_id):
 
     for i, (text, image) in enumerate(content):
         run_date = datetime.now(tz).date() + timedelta(days=i)
-        run_time = tz.localize(datetime.combine(run_date, datetime.strptime("18:33", "%H:%M").time()))
+        run_time = tz.localize(datetime.combine(run_date, datetime.strptime("18:39", "%H:%M").time()))
 
         logging.info(f"📅 Scheduled Day {i+1} at {run_time} for {chat_id}")
 
