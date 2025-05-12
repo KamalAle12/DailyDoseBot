@@ -56,7 +56,7 @@ def schedule_for_channel(chat_id):
 
     for i, (text, image) in enumerate(content):
         run_date = datetime.now(tz).date() + timedelta(days=i)
-        run_time = tz.localize(datetime.combine(run_date, datetime.strptime("18:00", "%H:%M").time()))
+        run_time = tz.localize(datetime.combine(run_date, datetime.strptime("18:33", "%H:%M").time()))
 
         logging.info(f"📅 Scheduled Day {i+1} at {run_time} for {chat_id}")
 
