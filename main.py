@@ -22,24 +22,60 @@ channel_ids = set()
 # Example: Unique messages and images for each day per channel
 channel_daily_content = {
     "@bottextchannel": [
-        ("🌞 Stay positive! Day 1", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
+        ("""💛 <b>Bet on MELBET – It’s Easy and Exciting!</b> 💛
+GET up to <b>53,000 NPR</b> on your first DEPOSIT! 🌟
+Let your luck lead you to big wins this April! 🔥
+
+This month, enjoy exciting football matches from ⚽ <b>EPL, UEFA, La Liga, Serie A</b>, and many more! 🎉 
+Plus, catch the action of the <b>IPL 🏏</b> and <b>PSL</b> with special bonuses this month! 🎁
+
+💥 <b>How to Get Started:</b>
+⿡ Register using the promocode - <b>MELIO</b>
+⿢ Click here to join: <a href="https://cropped.link/melio">https://cropped.link/melio</a>
+
+🎯 <b>Why MELBET?</b>
+✔ Easy to Place Bets – Simple steps to get started  
+✔ 24/7 Support – We're here to help anytime, in Nepali! 🇳🇵  
+✔ Fast Withdrawals – Get your winnings quickly and securely 💸
+
+💥 Support your favorite teams and enjoy the best betting odds with MELBET! ⚽🔥  
+<b>Start your winning journey today! 💰</b>
+""", "https://terq.in/wp-content/uploads/2025/05/melbate.jpg"),
         ("📘 Keep learning! Day 2", "https://cdn.pixabay.com/photo/2023/02/20/12/20/mountain-7802783_1280.jpg"),
-        ("🌞 Stay positive! Day 3", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
-        ("🌞 Stay positive! Day 4", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
+        ("🌞 Stay positive! Day 3", "https://terq.in/wp-content/uploads/2025/05/melbate.jpg"),
+        ("🌞 Stay positive! Day 4", "https://terq.in/wp-content/uploads/2025/05/melbate.jpg"),
         # Add up to 30 entries
     ],
     "@bottextchannel2": [
-        ("💡 Stay curious! Day 1", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
+        ("""💛 <b>Bet on MELBET – It’s Easy and Exciting!</b> 💛
+GET up to <b>53,000 NPR</b> on your first DEPOSIT! 🌟
+Let your luck lead you to big wins this April! 🔥
+
+This month, enjoy exciting football matches from ⚽ <b>EPL, UEFA, La Liga, Serie A</b>, and many more! 🎉 
+Plus, catch the action of the <b>IPL 🏏</b> and <b>PSL</b> with special bonuses this month! 🎁
+
+💥 <b>How to Get Started:</b>
+⿡ Register using the promocode - <b>MELIO</b>
+⿢ Click here to join: <a href="https://cropped.link/melio">https://cropped.link/melio</a>
+
+🎯 <b>Why MELBET?</b>
+✔ Easy to Place Bets – Simple steps to get started  
+✔ 24/7 Support – We're here to help anytime, in Nepali! 🇳🇵  
+✔ Fast Withdrawals – Get your winnings quickly and securely 💸
+
+💥 Support your favorite teams and enjoy the best betting odds with MELBET! ⚽🔥  
+<b>Start your winning journey today! 💰</b>
+""", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
         ("🎯 Stay focused! Day 2", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
-        ("🌞 Stay positive! Day 3", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
-        ("🌞 Stay positive! Day 4", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
+        ("🌞 Stay positive! Day 3", "https://terq.in/wp-content/uploads/2025/05/melbate.jpg"),
+        ("🌞 Stay positive! Day 4", "https://terq.in/wp-content/uploads/2025/05/melbate.jpg"),
         # Add up to 30 entries
     ],
     "@merildlin12": [
         ("💡 Stay curious! Day 1", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
         ("🎯 Stay focused! Day 2", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
-        ("🌞 Stay positive! Day 3", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
-        ("🌞 Stay positive! Day 4", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
+        ("🌞 Stay positive! Day 3", "https://terq.in/wp-content/uploads/2025/05/melbate.jpg"),
+        ("🌞 Stay positive! Day 4", "https://terq.in/wp-content/uploads/2025/05/melbate.jpg"),
         # Add up to 30 entries
     ]
 }
@@ -62,7 +98,7 @@ def schedule_for_channel(chat_id):
 
     for i, (text, image) in enumerate(content):
         run_date = datetime.now(tz).date() + timedelta(days=i)
-        run_time = tz.localize(datetime.combine(run_date, datetime.strptime("18:39", "%H:%M").time()))
+        run_time = tz.localize(datetime.combine(run_date, datetime.strptime("18:52", "%H:%M").time()))
 
         logging.info(f"📅 Scheduled Day {i+1} at {run_time} for {chat_id}")
 
