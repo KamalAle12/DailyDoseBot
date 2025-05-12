@@ -28,16 +28,13 @@ Let your luck lead you to big wins this April! 🔥
 
 This month, enjoy exciting football matches from ⚽ EPL, UEFA, La Liga, Serie A, and many more!🎉 
 Plus, catch the action of the IPL 🏏 and PSL with special bonuses this month!🎁
-
 💥How to Get Started:
 1️⃣ Register using the promocode - MELIO
 2️⃣ Click here to join: https://cropped.link/melio
-
 🎯 Why MELBET?
 ✔ Easy to Place Bets – Simple steps to get started  
 ✔ 24/7 Support – We're here to help anytime, in Nepali! 🇳🇵  
 ✔ Fast Withdrawals – Get your winnings quickly and securely 💸
-
 💥 Support your favorite teams and enjoy the best betting odds with MELBET! ⚽🔥  
 Start your winning journey today! 💰⚡️
 """, "https://terq.in/wp-content/uploads/2025/05/melbate.jpg"),
@@ -53,16 +50,13 @@ Let your luck lead you to big wins this April! 🔥
 
 This month, enjoy exciting football matches from ⚽ EPL, UEFA, La Liga, Serie A, and many more!🎉 
 Plus, catch the action of the IPL 🏏 and PSL with special bonuses this month!🎁
-
 💥How to Get Started:
 1️⃣ Register using the promocode - MELIO
 2️⃣ Click here to join: https://cropped.link/melio
-
 🎯 Why MELBET?
 ✔ Easy to Place Bets – Simple steps to get started  
 ✔ 24/7 Support – We're here to help anytime, in Nepali! 🇳🇵  
 ✔ Fast Withdrawals – Get your winnings quickly and securely 💸
-
 💥 Support your favorite teams and enjoy the best betting odds with MELBET! ⚽🔥  
 Start your winning journey today! 💰⚡️
 """, "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
@@ -71,26 +65,23 @@ Start your winning journey today! 💰⚡️
         ("🌞 Stay positive! Day 4", "https://terq.in/wp-content/uploads/2025/05/melbate.jpg"),
         # Add up to 30 entries
     ],
-    "@merildlin12": [
+    "@merildlin": [
         ("""💛Bet on MELBET – It’s Easy and Exciting!💛
 GET up to 53,000 NPR on your first DEPOSIT!🌟
 Let your luck lead you to big wins this April! 🔥
 
 This month, enjoy exciting football matches from ⚽ EPL, UEFA, La Liga, Serie A, and many more!🎉 
 Plus, catch the action of the IPL 🏏 and PSL with special bonuses this month!🎁
-
 💥How to Get Started:
 1️⃣ Register using the promocode - MELIO
 2️⃣ Click here to join: https://cropped.link/melio
-
 🎯 Why MELBET?
 ✔ Easy to Place Bets – Simple steps to get started  
 ✔ 24/7 Support – We're here to help anytime, in Nepali! 🇳🇵  
 ✔ Fast Withdrawals – Get your winnings quickly and securely 💸
-
 💥 Support your favorite teams and enjoy the best betting odds with MELBET! ⚽🔥  
 Start your winning journey today! 💰⚡️
-""", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
+""", "https://terq.in/wp-content/uploads/2025/05/melbate.jpg"),
         ("🎯 Stay focused! Day 2", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
         ("🌞 Stay positive! Day 3", "https://terq.in/wp-content/uploads/2025/05/melbate.jpg"),
         ("🌞 Stay positive! Day 4", "https://terq.in/wp-content/uploads/2025/05/melbate.jpg"),
@@ -116,7 +107,7 @@ def schedule_for_channel(chat_id):
 
     for i, (text, image) in enumerate(content):
         run_date = datetime.now(tz).date() + timedelta(days=i)
-        run_time = tz.localize(datetime.combine(run_date, datetime.strptime("19:05", "%H:%M").time()))
+        run_time = tz.localize(datetime.combine(run_date, datetime.strptime("19:12", "%H:%M").time()))
 
         logging.info(f"📅 Scheduled Day {i+1} at {run_time} for {chat_id}")
 
