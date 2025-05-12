@@ -22,11 +22,16 @@ channel_ids = set()
 # Example: Unique messages and images for each day per channel
 channel_daily_content = {
     "@bottextchannel": [
-        ("🌞 Stay positive! Day 1", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
+        ("🌞 Stay positive! Day 1", "https://drive.google.com/file/d/1kPQckAo9dtd1di9TPdWRYvUOQkmAfZsw/view?usp=sharing"),
         ("📘 Keep learning! Day 2", "https://cdn.pixabay.com/photo/2023/02/20/12/20/mountain-7802783_1280.jpg"),
         # Add up to 30 entries
     ],
     "@bottextchannel2": [
+        ("💡 Stay curious! Day 1", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
+        ("🎯 Stay focused! Day 2", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
+        # Add up to 30 entries
+    ],
+    "@merildlin12": [
         ("💡 Stay curious! Day 1", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
         ("🎯 Stay focused! Day 2", "https://cdn.pixabay.com/photo/2023/01/14/15/33/sand-dunes-7718479_1280.jpg"),
         # Add up to 30 entries
